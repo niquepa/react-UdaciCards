@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
 import { connect } from 'react-redux';
 // import { NavigationActions } from 'react-navigation';
+import { receiveDecks } from '../actions';
 
 class DecksList extends Component {
+  // componentDidMount() {
+  //   this.props.dispatch(receiveDecks(decks));
+  // }
   render() {
     return (
       <View>
-        <Text>List of Decks</Text>
+        <Text>List of Decks {JSON.stringify(this.props)}</Text>
       </View>
     );
   }
 }
 
-function mapStateToProps(state) {
-  // const key = timeToString();
-  //
-  // return {
-  //   alreadyLogged: state[key] && typeof state[key].today === 'undefined',
-  // };
-}
+const mapStateToProps = ({ decks }) => ({
+  decks,
+});
 
-export default DecksList;
+export default connect(mapStateToProps)(DecksList);

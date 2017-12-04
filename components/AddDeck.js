@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform, TextInput } from 'react-native';
 import { connect } from 'react-redux';
-// import { NavigationActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation';
+import { addDeck } from '../actions';
 import { red, purple, white } from '../utils/colors';
 
 function SubmitBtn({ onPress }) {
@@ -21,6 +22,23 @@ class AddDeck extends Component {
   }
   handleTextChange = (title) => {
     this.setState({ title });
+  }
+  submit = () => {
+    const key = JSON.stringify(this.state.title);
+    const deck = this.state;
+
+    this.props.dispatch(addDeck({
+      [key]: deck,
+    }));
+
+    this.setState({ title: '' });
+
+    this.toHome();
+
+    // submitEntry({ key, entry });
+  }
+  toHome = () => {
+    this.props.navigation.dispatch(NavigationActions.back({ key: 'AddDeck' }));
   }
   render() {
     return (
@@ -93,12 +111,15 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps(state) {
-  // const key = timeToString();
-  //
-  // return {
-  //   alreadyLogged: state[key] && typeof state[key].today === 'undefined',
-  // };
-}
+const mapStateToProps = state => ({
 
-export default AddDeck;
+});
+
+
+// const key = timeToString();
+//
+// return {
+//   alreadyLogged: state[key] && typeof state[key].today === 'undefined',
+// };
+
+export default connect(mapStateToProps)(AddDeck);
