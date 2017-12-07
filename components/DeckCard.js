@@ -2,26 +2,19 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
 import { connect } from 'react-redux';
 // import { NavigationActions } from 'react-navigation';
-import DeckCard from './DeckCard';
 
-class DecksList extends Component {
+class DeckCard extends Component {
   render() {
-    const { decks } = this.props;
-    console.log(`DECKS: ${JSON.stringify(decks)}`);
-    console.log(`DECKS SIZE: ${JSON.stringify(decks.size)}`);
     return (
       <View>
-        <Text>List of Decks {JSON.stringify(this.props)}</Text>
-        {Object.keys(decks).map(deck => (
-          <DeckCard key={} data={deck} />
-          ))}
+        <Text>THIS IS: {this.props.data}</Text>
       </View>
     );
   }
 }
 
 const mapStateToProps = decks => ({
-  decks,
+  //decks,
 });
 
 // function mapStateToProps(decks, { navigation }) {
@@ -33,4 +26,4 @@ const mapStateToProps = decks => ({
 //   };
 // }
 
-export default connect(mapStateToProps)(DecksList);
+export default connect(mapStateToProps)(DeckCard);
