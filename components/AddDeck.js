@@ -24,14 +24,17 @@ class AddDeck extends Component {
     this.setState({ title });
   }
   submit = () => {
-    const key = JSON.stringify(this.state.title);
-    const deck = this.state;
+    // const key = JSON.stringify(this.state.title);
+    const key = this.state.title;
+    const deck = this.state.title;
 
     this.props.dispatch(addDeck({
       [key]: deck,
     }));
 
-    this.setState({ title: '' });
+    console.log(`SUBMIT ACTION: key:${key}-deck:${deck}`);
+
+    this.setState({ title: 'My Deck 2' });
 
     this.toHome();
 

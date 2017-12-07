@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
 import { connect } from 'react-redux';
 // import { NavigationActions } from 'react-navigation';
-import { receiveDecks } from '../actions';
 
 class DecksList extends Component {
-  // componentDidMount() {
-  //   this.props.dispatch(receiveDecks(decks));
-  // }
   render() {
     return (
       <View>
@@ -17,8 +13,17 @@ class DecksList extends Component {
   }
 }
 
-const mapStateToProps = ({ decks }) => ({
+const mapStateToProps = decks => ({
   decks,
 });
+
+// function mapStateToProps(decks, { navigation }) {
+//   // const { entryId } = navigation.state.params;
+//
+//   return {
+//     // entryId,
+//     decks,
+//   };
+// }
 
 export default connect(mapStateToProps)(DecksList);
