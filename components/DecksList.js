@@ -12,9 +12,11 @@ class DecksList extends Component {
     return (
       <View>
         <Text>List of Decks {JSON.stringify(this.props)}</Text>
-        {Object.keys(decks).map(deck => (
-          <DeckCard key={} data={deck} />
-          ))}
+        {
+          Object.keys(decks).map(key => (
+            <DeckCard key={key} deckId={key} title={decks[key].title} cards={decks[key].cards.length} />
+          ))
+        }
       </View>
     );
   }

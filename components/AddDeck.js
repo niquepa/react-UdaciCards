@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { addDeck } from '../actions';
 import { red, purple, white } from '../utils/colors';
+import { keyGenerator } from '../utils/helpers';
 
 function SubmitBtn({ onPress }) {
   return (
@@ -24,11 +25,14 @@ class AddDeck extends Component {
     this.setState({ title });
   }
   submit = () => {
-    const key = this.state.title;
     const deck = this.state.title;
+    const key = keyGenerator(deck);
 
     this.props.dispatch(addDeck({
-      [key]: deck,
+      [key]: {
+        title: deck,
+        cards: [],
+      },
     }));
 
     // console.log(`SUBMIT ACTION: key:${key}-deck:${deck}`);
