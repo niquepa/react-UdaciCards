@@ -49,6 +49,7 @@ class AddDeck extends Component {
   render() {
     return (
       <View style={styles.center}>
+        <Text>Add Decks {JSON.stringify(this.props)}</Text>
         <Text style={styles.questionText}>What is the title of your new deck?</Text>
         <TextInput
           value={this.state.title}

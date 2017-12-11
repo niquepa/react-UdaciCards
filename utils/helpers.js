@@ -4,15 +4,6 @@ import { purple, white } from './colors';
 
 export const keyGenerator = title => title.replace(/\s/gi, '');
 
-export const AppBtn = (onPress, text) => (
-  <TouchableOpacity
-    style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-    onPress={onPress}
-  >
-    <Text style={styles.submitBtnText}>{text}</Text>
-  </TouchableOpacity>
-);
-
 const styles = StyleSheet.create({
   iosSubmitBtn: {
     backgroundColor: purple,

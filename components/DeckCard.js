@@ -1,36 +1,34 @@
-import React, { Component }                                   from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
-import { connect }                                            from 'react-redux';
-// import { NavigationActions } from 'react-navigation';
-import { red, purple, white }                                 from '../utils/colors';
-// import { AppBtn }                                             from '../utils/helpers';
+import React, { Component } from 'react';
+import { View, TouchableOpacity, Text, StyleSheet, Platform, Button } from 'react-native';
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
+import { red, purple, white } from '../utils/colors';
 
-function AppBtn({ onPress, text }) {
-  return (
-    <TouchableOpacity
-      style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-      onPress={onPress}
-    >
-      <Text style={styles.submitBtnText}>{text}</Text>
-    </TouchableOpacity>
-  );
-}
+// const navigateAction = NavigationActions.navigate({
+//   routeName: 'DeckDetail',
+//   params: { id},
+//
+//   // navigate can have a nested navigate action that will be run inside the child router
+//   action: NavigationActions.navigate({ routeName: 'SubProfileRoute' }),
+// });
 
 class DeckCard extends Component {
   render() {
-    const { deckId, title, cards } = this.props;
+    const { id, title, cards } = this.props;
+    console.log(`PROPS: ${JSON.stringify(this.props.navigation)}`);
+
     return (
-      <View>
-        <AppBtn onPress={`onPress`} text={title} />
-        {/*<TouchableOpacity*/}
-          {/*style={styles.button}*/}
-          {/*onPress={() => this.props.navigation.navigate(*/}
-            {/*'DeckDetail',*/}
-            {/*{ deckId },*/}
-          {/*)}*/}
-        {/*>*/}
-          {/*<Text style={styles.countText}>{title}</Text>*/}
-        {/*</TouchableOpacity>*/}
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
+          onPress={() => this.props.navigation.dispatch(NavigationActions.navigate({
+            routeName: 'DeckDetail',
+            params: { id },
+            // action: NavigationActions.navigate({ routeName: 'SubProfileRoute' }),
+          }))}
+        >
+          <Text style={styles.CardText}> {title} ({cards} Cards) </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -38,22 +36,10 @@ class DeckCard extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 10,
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: purple,
-    padding: 10,
-  },
-  countContainer: {
-    alignItems: 'center',
-    padding: 10,
-  },
-  countText: {
-    color: '#FF00FF',
-    fontSize: 22,
+    // paddingHorizontal: 10,
+    marginTop: 10,
   },
   iosSubmitBtn: {
     backgroundColor: purple,
@@ -74,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  submitBtnText: {
+  CardText: {
     color: white,
     fontSize: 22,
     textAlign: 'center',
