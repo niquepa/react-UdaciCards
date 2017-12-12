@@ -14,18 +14,14 @@ import { red, purple, white } from '../utils/colors';
 
 class DeckCard extends Component {
   render() {
-    const { id, title, cards } = this.props;
+    const { title, cards, onPress } = this.props;
     console.log(`PROPS: ${JSON.stringify(this.props.navigation)}`);
 
     return (
       <View style={styles.container}>
         <TouchableOpacity
           style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-          onPress={() => this.props.navigation.dispatch(NavigationActions.navigate({
-            routeName: 'DeckDetail',
-            params: { id },
-            // action: NavigationActions.navigate({ routeName: 'SubProfileRoute' }),
-          }))}
+          onPress={onPress}
         >
           <Text style={styles.CardText}> {title} ({cards} Cards) </Text>
         </TouchableOpacity>

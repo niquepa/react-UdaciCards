@@ -9,7 +9,7 @@ import { purple, white } from '../utils/colors';
 class DecksList extends Component {
   render() {
     const { decks } = this.props;
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
     console.log(`DECKS: ${JSON.stringify(decks)}`);
     console.log(`DECKS SIZE: ${JSON.stringify(decks.size)}`);
     console.log(`PROPS LIST: ${JSON.stringify(this.props.navigation.navigate)}`);
@@ -18,13 +18,19 @@ class DecksList extends Component {
         <Text>List of Decks {JSON.stringify(this.props)}</Text>
         {
           Object.keys(decks).map(key => (
-            <TouchableOpacity
-              style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
+            <DeckCard
               key={key}
-              onPress={() => navigate('DeckDetail', {id: key})}
-            >
-              <Text style={styles.CardText}> {decks[key].title} ({decks[key].cards.length} Card(s)) </Text>
-            </TouchableOpacity>
+              title={decks[key].title}
+              cards={decks[key].cards.length}
+              onPress={() => navigate('DeckDetail', { id: key })}
+            />
+            // <TouchableOpacity
+            //   style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
+            //   key={key}
+            //   onPress={() => navigate('DeckDetail', {id: key})}
+            // >
+            //   <Text style={styles.CardText}> {decks[key].title} ({decks[key].cards.length} Card(s)) </Text>
+            // </TouchableOpacity>
           ))
         }
       </View>
