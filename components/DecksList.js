@@ -22,7 +22,7 @@ class DecksList extends Component {
               key={key}
               title={decks[key].title}
               cards={decks[key].cards.length}
-              onPress={() => navigate('DeckDetail', { id: key })}
+              onPress={() => navigate('Deck', { id: key })}
             />
             // <TouchableOpacity
             //   style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
