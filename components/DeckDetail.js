@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component }                                   from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
-import { connect } from 'react-redux';
+import { connect }                                            from 'react-redux';
 // import { NavigationActions } from 'react-navigation';
+import { UdacityBtn}                                          from "../utils/helpers";
 
 class DeckDetail extends Component {
   // static navigationOptions = ( { navigation }) => {
@@ -11,26 +12,45 @@ class DeckDetail extends Component {
   //     title: 'HOLA',
   //   };
   // }
+  // constructor(props) {
+  //   super(props);
+  //   if (props.deck) {
+  //     props.navigation.setParams({ deck: props.deck });
+  //   }
+  // }
+
   static navigationOptions = ({ navigation }) => {
-    const title = navigation.params && navigation.params.deck ? navigation.params.deck : 'NO TITULO';
+    // const title = (((((navigation || '').state || '').params || '').deck || '').title || '') !== '' ? navigation.state.params.deck.title : 'NO TITLE';
+    const title = navigation.state.params.id;
     return {
       title,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('ENTRO A WILL RECEIVE');
-    if (nextProps.deck) {
-      console.log('ENTRO A RECEIVE DECK');
-      this.props.navigation.setParams({ deck });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('ENTRO A WILL RECEIVE');
+  //   if (nextProps.deck && nextProps.deck !== this.props.deck) {
+  //     console.log('ENTRO A RECEIVE DECK');
+  //     this.props.navigation.setParams({ deck: nextProps.deck });
+  //   }
+  // }
+  // componentDidMount() {
+  //   console.log(`ENTRO A DIDMOUNT ${JSON.stringify(this.navigation)}`);
+  //   if(this.props.deck) {
+  //     this.props.navigation.setParams({ deck: this.props.deck });
+  //   }
+  // }
 
   render() {
+    console.log(`PROPS EN RENDER DETAIL: ${JSON.stringify(this.props)}`);
+    // console.log(`STYLES ${styles.iosSubmitBtn}`)
     return (
       <View>
-        <Text>Detail of Deck: {this.props.deck.title}</Text>
         <Text>PROPS: {JSON.stringify(this.props)}</Text>
+        <Text>{this.props.deck.title}</Text>
+        <Text>{this.props.deck.cards.length} cards</Text>
+        <UdacityBtn text='Add Card' />
+        <UdacityBtn text='Start Quiz' />
       </View>
     );
   }

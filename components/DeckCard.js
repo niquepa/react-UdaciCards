@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Text, StyleSheet, Platform, Button } from 'reac
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { red, purple, white } from '../utils/colors';
+import { UdacityBtn } from '../utils/helpers';
 
 // const navigateAction = NavigationActions.navigate({
 //   routeName: 'DeckDetail',
@@ -19,12 +20,7 @@ class DeckCard extends Component {
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-          onPress={onPress}
-        >
-          <Text style={styles.CardText}> {title} ({cards} Cards) </Text>
-        </TouchableOpacity>
+        <UdacityBtn text={`${title} (${cards} Cards)`} onPress={onPress} />
       </View>
     );
   }

@@ -26,8 +26,9 @@ class AddDeck extends Component {
   }
   submit = () => {
     const deck = this.state.title;
-    const key = keyGenerator(deck);
-
+    // const key = keyGenerator(deck);
+    const key = deck
+    
     this.props.dispatch(addDeck({
       [key]: {
         title: deck,
