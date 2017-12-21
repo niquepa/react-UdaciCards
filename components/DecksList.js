@@ -22,15 +22,8 @@ class DecksList extends Component {
               key={key}
               title={decks[key].title}
               cards={decks[key].cards.length}
-              onPress={() => navigate('Deck', { id: key })}
+              onPress={() => navigate('DeckDetail', { id: key })}
             />
-            // <TouchableOpacity
-            //   style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-            //   key={key}
-            //   onPress={() => navigate('DeckDetail', {id: key})}
-            // >
-            //   <Text style={styles.CardText}> {decks[key].title} ({decks[key].cards.length} Card(s)) </Text>
-            // </TouchableOpacity>
           ))
         }
       </View>
@@ -74,14 +67,5 @@ const styles = StyleSheet.create({
 const mapStateToProps = decks => ({
   decks,
 });
-
-// function mapStateToProps(decks, { navigation }) {
-//   // const { entryId } = navigation.state.params;
-//
-//   return {
-//     // entryId,
-//     decks,
-//   };
-// }
 
 export default connect(mapStateToProps)(DecksList);

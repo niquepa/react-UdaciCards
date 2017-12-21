@@ -1,8 +1,7 @@
-import React, { Component }                                   from 'react';
+import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
-import { connect }                                            from 'react-redux';
-// import { NavigationActions } from 'react-navigation';
-import { UdacityBtn}                                          from "../utils/helpers";
+import { connect } from 'react-redux';
+import { UdacityBtn } from '../utils/helpers';
 
 class DeckDetail extends Component {
   // static navigationOptions = ( { navigation }) => {
@@ -19,13 +18,13 @@ class DeckDetail extends Component {
   //   }
   // }
 
-  static navigationOptions = ({ navigation }) => {
-    // const title = (((((navigation || '').state || '').params || '').deck || '').title || '') !== '' ? navigation.state.params.deck.title : 'NO TITLE';
-    const title = navigation.state.params.id;
-    return {
-      title,
-    };
-  }
+  // static navigationOptions = ({ navigation }) => {
+  //   // const title = (((((navigation || '').state || '').params || '').deck || '').title || '') !== '' ? navigation.state.params.deck.title : 'NO TITLE';
+  //   const title = navigation.state.params.id;
+  //   return {
+  //     title,
+  //   };
+  // }
 
   // componentWillReceiveProps(nextProps) {
   //   console.log('ENTRO A WILL RECEIVE');
@@ -49,8 +48,8 @@ class DeckDetail extends Component {
         <Text>PROPS: {JSON.stringify(this.props)}</Text>
         <Text>{this.props.deck.title}</Text>
         <Text>{this.props.deck.cards.length} cards</Text>
-        <UdacityBtn text='Add Card' />
-        <UdacityBtn text='Start Quiz' />
+        <UdacityBtn text="Add Card" />
+        <UdacityBtn text="Start Quiz" />
       </View>
     );
   }

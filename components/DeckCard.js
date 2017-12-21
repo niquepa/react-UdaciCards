@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 import { red, purple, white } from '../utils/colors';
 import { UdacityBtn } from '../utils/helpers';
-
-// const navigateAction = NavigationActions.navigate({
-//   routeName: 'DeckDetail',
-//   params: { id},
-//
-//   // navigate can have a nested navigate action that will be run inside the child router
-//   action: NavigationActions.navigate({ routeName: 'SubProfileRoute' }),
-// });
 
 class DeckCard extends Component {
   render() {
@@ -62,14 +53,5 @@ const styles = StyleSheet.create({
 const mapStateToProps = decks => ({
   // decks,
 });
-
-// function mapStateToProps(decks, { navigation }) {
-//   // const { entryId } = navigation.state.params;
-//
-//   return {
-//     // entryId,
-//     decks,
-//   };
-// }
 
 export default connect(mapStateToProps)(DeckCard);
