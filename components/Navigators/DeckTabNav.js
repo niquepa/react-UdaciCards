@@ -26,13 +26,13 @@ const DeckTabNav = TabNavigator({
       tabBarIcon: ({ tintColor }) => <FontAwesome name="plus-square" size={30} color={tintColor} />,
     },
   },
-  Quiz: {
-    screen: Quiz,
-    navigationOptions: {
-      tabBarLabel: 'Start Quiz',
-      tabBarIcon: ({ tintColor }) => <FontAwesome name="plus-square" size={30} color={tintColor} />,
-    },
-  },
+  // Quiz: {
+  //   screen: Quiz,
+  //   navigationOptions: {
+  //     tabBarLabel: 'Start Quiz',
+  //     tabBarIcon: ({ tintColor }) => <FontAwesome name="plus-square" size={30} color={tintColor} />,
+  //   },
+  // },
 }, {
   // navigationOptions: {
   //   header: null,

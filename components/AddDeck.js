@@ -25,6 +25,7 @@ class AddDeck extends Component {
     this.setState({ title });
   }
   submit = () => {
+    // TODO: validate null and undefined
     const deck = this.state.title;
     // const key = keyGenerator(deck);
     const key = deck

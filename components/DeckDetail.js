@@ -41,6 +41,7 @@ class DeckDetail extends Component {
   // }
 
   render() {
+    const { navigate } = this.props.navigation;
     console.log(`PROPS EN RENDER DETAIL: ${JSON.stringify(this.props)}`);
     // console.log(`STYLES ${styles.iosSubmitBtn}`)
     return (
@@ -48,8 +49,10 @@ class DeckDetail extends Component {
         <Text>PROPS: {JSON.stringify(this.props)}</Text>
         <Text>{this.props.deck.title}</Text>
         <Text>{this.props.deck.cards.length} cards</Text>
-        <UdacityBtn text="Add Card" />
-        <UdacityBtn text="Start Quiz" />
+        <UdacityBtn
+          text="Start Quiz"
+          onPress={() => navigate('Quiz', { id: this.props.id })}
+        />
       </View>
     );
   }
@@ -58,6 +61,7 @@ class DeckDetail extends Component {
 const mapStateToProps = (decks, { navigation }) => {
   const { id } = navigation.state.params;
   return {
+    id,
     deck: decks[id],
   };
 };

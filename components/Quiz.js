@@ -10,14 +10,18 @@ class Quiz extends Component {
   render() {
     return (
       <View>
-        <Text>Quiz view</Text>
+        <Text>Quiz view {this.props.id}</Text>
       </View>
     );
   }
 }
-const mapStateToProps = decks => ({
-  // decks,
-});
+const mapStateToProps = (decks, { navigation }) => {
+  const { id } = navigation.state.params;
+  return {
+    id,
+    deck: decks[id],
+  };
+};
 
 // function mapStateToProps(decks, { navigation }) {
 //   // const { entryId } = navigation.state.params;
