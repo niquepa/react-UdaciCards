@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Platform, TextInput } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, Platform, TextInput, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { addDeck } from '../actions';
 import { red, purple, white } from '../utils/colors';
 import { keyGenerator } from '../utils/helpers';
+import { submitDeck } from '../utils/api';
 
 function SubmitBtn({ onPress }) {
   return (
@@ -20,34 +21,45 @@ function SubmitBtn({ onPress }) {
 class AddDeck extends Component {
   state = {
     title: 'My Deck',
+    cards: [],
   }
   handleTextChange = (title) => {
     this.setState({ title });
   }
   submit = () => {
-    // TODO: validate null and undefined
-    const deck = this.state.title;
-    // const key = keyGenerator(deck);
-    const key = deck
-    
-    this.props.dispatch(addDeck({
-      [key]: {
-        title: deck,
-        cards: [],
-      },
-    }));
+    if (this.state.title === '' || this.state.title === 'undefined') {
+      this.alert('Error creating new deck', 'You have to specify a title');
+    } else {
+      // const key = keyGenerator(deck);
+      const key = this.state.title;
+      const deck = this.state;
 
-    // console.log(`SUBMIT ACTION: key:${key}-deck:${deck}`);
+      this.props.dispatch(addDeck({
+        [key]: deck,
+      }));
 
-    this.setState({ title: 'My Deck' });
+      this.setState({ title: 'My Deck' });
 
-    this.toHome();
+      this.toHome();
 
-    // submitEntry({ key, entry });
+      submitDeck({ key, deck });
+    }
   }
+
   toHome = () => {
     this.props.navigation.dispatch(NavigationActions.back({ key: 'AddDeck' }));
   }
+
+  alert = (title, message) => {
+    Alert.alert(
+      title,
+      message,
+      [
+        { text: 'OK' },
+      ],
+    );
+  }
+
   render() {
     return (
       <View style={styles.center}>

@@ -5,8 +5,25 @@ import { connect } from 'react-redux';
 import DeckCard from './DeckCard';
 import { NavigationActions } from 'react-navigation';
 import { purple, white } from '../utils/colors';
+import { fetchDecks } from '../actions/index';
 
 class DecksList extends Component {
+  componentDidMount() {
+    // const { dispatch } = this.props;
+    this.props.getDecks();
+
+    // fetchDecks()
+    //   .then(decks => dispatch(receiveEntries(entries)))
+    //   .then(({ entries }) => {
+    //     if (!entries[timeToString()]) {
+    //       dispatch(addEntry({
+    //         [timeToString()]: getDailyReminderValue(),
+    //       }));
+    //     }
+    //   })
+    //   .then(() => this.setState(() => ({ ready: true })));
+  }
+
   render() {
     const { decks } = this.props;
     const { navigate } = this.props.navigation;
@@ -68,4 +85,8 @@ const mapStateToProps = decks => ({
   decks,
 });
 
-export default connect(mapStateToProps)(DecksList);
+const mapDispatchToProps = dispatch => ({
+  getDecks: () => dispatch(fetchDecks()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DecksList);
