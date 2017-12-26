@@ -1,4 +1,4 @@
-import { RECEIVE_DECKS, ADD_DECK } from '../actions';
+import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from '../actions';
 
 function decks(state = {}, action) {
   switch (action.type) {
@@ -11,6 +11,18 @@ function decks(state = {}, action) {
       return {
         ...state,
         ...action.deck,
+      };
+    case ADD_CARD:
+      console.log(`ADD CARD ${action.deck} - ${JSON.stringify(action.card)}`);
+      return {
+        ...state,
+        [action.deck]: {
+          ...state,
+          cards: {
+            ...state,
+            ...action.card,
+          },
+        },
       };
     default:
       return state;

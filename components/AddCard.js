@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
-import { addDeck } from '../actions';
+import { addDeck, addCard, fetchDecks, newCard } from '../actions';
 import { red, purple, white } from '../utils/colors';
+import { submitDeck } from '../utils/api';
 
 function SubmitBtn({ onPress }) {
   return (
@@ -22,35 +23,27 @@ class AddCard extends Component {
     answer: 'The Answer',
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-
   submit = () => {
-    const deck = this.state.title;
-    // const key = keyGenerator(deck);
-    const key = deck;
+    if (this.state.question === '' || this.state.question === 'undefined' || this.state.answer === '' || this.state.answer === 'undefined') {
+      this.alert('Error creating new card', 'You have to specify a Question and an Answer');
+    } else {
+      const card = this.state;
 
-    this.props.dispatch(addDeck({
-      [key]: {
-        title: deck,
-        cards: [],
-      },
-    }));
+      // this.props.dispatch(addDeck({
+      //   [key]: deck,
+      // }));
 
-    // console.log(`SUBMIT ACTION: key:${key}-deck:${deck}`);
+      this.setState({
+        question: 'The Question?',
+        answer: 'The Answer',
+      });
 
-    this.setState({ title: 'My Deck' });
+      this.props.addCard('DOT', card);
 
-    this.toHome();
+      this.toHome();
 
-    // submitEntry({ key, entry });
+      // submitDeck({ key, deck });
+    }
   }
   toHome = () => {
     this.props.navigation.dispatch(NavigationActions.back({ key: 'AddDeck' }));
@@ -61,12 +54,12 @@ class AddCard extends Component {
         <Text>Add Card to Deck {JSON.stringify(this.props)}</Text>
         <TextInput
           value={this.state.question}
-          onChangeText={this.handleInputChange}
+          onChangeText={text => this.setState({ question: text })}
           style={styles.inputText}
         />
         <TextInput
           value={this.state.answer}
-          onChangeText={this.handleInputChange}
+          onChangeText={text => this.setState({ answer: text })}
           style={styles.inputText}
         />
         <SubmitBtn onPress={this.submit} />
@@ -135,11 +128,13 @@ const mapStateToProps = state => ({
 
 });
 
-
+const mapDispatchToProps = dispatch => ({
+  addCard: (deck, card) => dispatch(newCard(deck, card)),
+});
 // const key = timeToString();
 //
 // return {
 //   alreadyLogged: state[key] && typeof state[key].today === 'undefined',
 // };
 
-export default connect(mapStateToProps)(AddCard);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCard);
