@@ -4,15 +4,11 @@ const STORAGE_KEY = '@Udacity:decks';
 
 
 export function getDecks() {
-  try {
-    // AsyncStorage.clear();
-    AsyncStorage.getItem(STORAGE_KEY, (err, result) => {
-      console.log(`PROMISE METHOD ${result}`);
-      return result;
+  // AsyncStorage.clear();
+  return AsyncStorage.getItem(STORAGE_KEY)
+    .then(results => {
+      return JSON.parse(results);
     });
-  } catch (error) {
-    console.log(`LOCAL ERROR: ${error}`);
-  }
 }
 
 export function submitDeck({ deck, key }) {

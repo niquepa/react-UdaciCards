@@ -17,14 +17,8 @@ export function addDeck(deck) {
   };
 }
 
-export const fetchDecks = () => dispatch => {
-  // localStorageAPI
-  //   .getDecks()
-  //   .then(decks => dispatch receiveDecks(decks))
-  const decks = localStorageAPI.getDecks();
-  console.log( `ACTIONS decks:${JSON.stringify(decks)}` );
-  // .then(decks => dispatch(receiveDecks(decks)))
-  // if (decks) {
-  //   dispatch( receiveDecks( decks ) )
-  // }
+export const fetchDecks = () => (dispatch) => {
+  localStorageAPI
+    .getDecks()
+    .then(decks => dispatch(receiveDecks(decks)));
 };

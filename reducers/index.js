@@ -8,7 +8,6 @@ function decks(state = {}, action) {
         ...action.decks,
       };
     case ADD_DECK:
-      // console.log(`REDUCER: ${JSON.stringify(action.deck)}`)
       return {
         ...state,
         ...action.deck,

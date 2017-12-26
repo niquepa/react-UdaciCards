@@ -9,27 +9,14 @@ import { fetchDecks } from '../actions/index';
 
 class DecksList extends Component {
   componentDidMount() {
-    // const { dispatch } = this.props;
     this.props.getDecks();
-
-    // fetchDecks()
-    //   .then(decks => dispatch(receiveEntries(entries)))
-    //   .then(({ entries }) => {
-    //     if (!entries[timeToString()]) {
-    //       dispatch(addEntry({
-    //         [timeToString()]: getDailyReminderValue(),
-    //       }));
-    //     }
-    //   })
-    //   .then(() => this.setState(() => ({ ready: true })));
   }
 
   render() {
     const { decks } = this.props;
     const { navigate } = this.props.navigation;
     console.log(`DECKS: ${JSON.stringify(decks)}`);
-    console.log(`DECKS SIZE: ${JSON.stringify(decks.size)}`);
-    console.log(`PROPS LIST: ${JSON.stringify(this.props.navigation.navigate)}`);
+    console.log(`DECKS SIZE: ${decks.size}`);
     return (
       <View>
         <Text>List of Decks {JSON.stringify(this.props)}</Text>
