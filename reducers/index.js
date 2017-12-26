@@ -17,11 +17,13 @@ function decks(state = {}, action) {
       return {
         ...state,
         [action.deck]: {
-          ...state,
-          cards: {
-            ...state,
-            ...action.card,
-          },
+          ...state[action.deck],
+          cards: [
+            ...state[action.deck].cards,
+            {
+              ...action.card,
+            },
+          ],
         },
       };
     default:

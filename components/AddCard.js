@@ -40,10 +40,13 @@ class AddCard extends Component {
 
       this.props.addCard('DOT', card);
 
-      this.toHome();
+      this.goBack();
 
       // submitDeck({ key, deck });
     }
+  }
+  goBack = () => {
+    this.props.navigation.goBack(null);
   }
   toHome = () => {
     this.props.navigation.dispatch(NavigationActions.back({ key: 'AddDeck' }));
