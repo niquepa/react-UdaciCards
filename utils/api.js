@@ -11,7 +11,7 @@ export function getDecks() {
     });
 }
 
-export function submitDeck({ deck, key }) {
+export function submitDeck({ key, deck }) {
   try {
     console.log(`SAVING IN LOCAL ${key}:${JSON.stringify(deck)}`);
     return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
@@ -21,6 +21,10 @@ export function submitDeck({ deck, key }) {
     console.log(`SAVING IN LOCAL ERROR ${key} - ${error}`);
   }
 }
+
+// export const newCard = (deck, card) =>  {
+//
+// }
 
 export function removeEntry(key) {
   return AsyncStorage.getItem(CALENDAR_STORAGE_KEY)

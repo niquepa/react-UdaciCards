@@ -5,6 +5,7 @@ import { NavigationActions } from 'react-navigation';
 import { addDeck, addCard, fetchDecks, newCard } from '../actions';
 import { red, purple, white } from '../utils/colors';
 import { submitDeck } from '../utils/api';
+import { alert } from '../utils/helpers';
 
 function SubmitBtn({ onPress }) {
   return (
@@ -25,24 +26,32 @@ class AddCard extends Component {
 
   submit = () => {
     if (this.state.question === '' || this.state.question === 'undefined' || this.state.answer === '' || this.state.answer === 'undefined') {
-      this.alert('Error creating new card', 'You have to specify a Question and an Answer');
+      alert('Error creating new card', 'You have to specify a Question and an Answer');
     } else {
       const card = this.state;
 
-      // this.props.dispatch(addDeck({
-      //   [key]: deck,
-      // }));
+      const key = this.props.id;
+      const cards = this.props.deck.cards;
+
+      this.props.addCard(key, card);
 
       this.setState({
         question: 'The Question?',
         answer: 'The Answer',
       });
 
-      this.props.addCard('DOT', card);
-
       this.goBack();
 
-      // submitDeck({ key, deck });
+      const deck = {
+        cards: [
+          ...cards,
+          {
+            ...card,
+          },
+        ],
+      };
+
+      submitDeck({ key, deck });
     }
   }
   goBack = () => {
@@ -51,6 +60,7 @@ class AddCard extends Component {
   toHome = () => {
     this.props.navigation.dispatch(NavigationActions.back({ key: 'AddDeck' }));
   }
+
   render() {
     return (
       <View style={styles.center}>
@@ -127,9 +137,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => ({
-
-});
+const mapStateToProps = (decks, { navigation }) => {
+  const { id } = navigation.state.params;
+  return {
+    id,
+    deck: decks[id],
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   addCard: (deck, card) => dispatch(newCard(deck, card)),

@@ -28,6 +28,20 @@ export const newCard = (deck, card) => dispatch => (
   dispatch(addCard(deck, card))
 );
 
+// export const newCard = (key, card) => (dispatch, getState) => {
+//   dispatch(addCard(key, card))
+//     .then((getState) => {
+//       const state = getState();
+//       console.log(`GETSTATE ${JSON.stringify(state[key])}`);
+//     });
+//   // localStorageAPI
+//   //   .submitDeck({ key, deck: {
+//   //       cards: [card]
+//   //     }
+//   //   })
+//   //   .then(dispatch(addCard(key, card)))
+// };
+
 export const newPost = body => dispatch => (
   readableAPI
     .newPost(body)

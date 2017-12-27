@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { addDeck } from '../actions';
 import { red, purple, white } from '../utils/colors';
-import { keyGenerator } from '../utils/helpers';
 import { submitDeck } from '../utils/api';
+import { alert } from '../utils/helpers';
 
 function SubmitBtn({ onPress }) {
   return (
@@ -28,7 +28,7 @@ class AddDeck extends Component {
   }
   submit = () => {
     if (this.state.title === '' || this.state.title === 'undefined') {
-      this.alert('Error creating new deck', 'You have to specify a title');
+      alert('Error creating new deck', 'You have to specify a title');
     } else {
       // const key = keyGenerator(deck);
       const key = this.state.title;
@@ -49,17 +49,7 @@ class AddDeck extends Component {
   toHome = () => {
     this.props.navigation.dispatch(NavigationActions.back({ key: 'AddDeck' }));
   }
-
-  alert = (title, message) => {
-    Alert.alert(
-      title,
-      message,
-      [
-        { text: 'OK' },
-      ],
-    );
-  }
-
+  
   render() {
     return (
       <View style={styles.center}>
