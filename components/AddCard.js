@@ -28,12 +28,21 @@ class AddCard extends Component {
     if (this.state.question === '' || this.state.question === 'undefined' || this.state.answer === '' || this.state.answer === 'undefined') {
       alert('Error creating new card', 'You have to specify a Question and an Answer');
     } else {
-      const card = this.state;
+      // const card = this.state;
 
       const key = this.props.id;
       const cards = this.props.deck.cards;
-
-      this.props.addCard(key, card);
+  
+      const deck = {
+        cards: [
+          ...cards,
+          {
+            ...this.state,
+          },
+        ],
+      };
+      
+      this.props.addCard(key, deck);
 
       this.setState({
         question: 'The Question?',
@@ -42,16 +51,16 @@ class AddCard extends Component {
 
       this.goBack();
 
-      const deck = {
-        cards: [
-          ...cards,
-          {
-            ...card,
-          },
-        ],
-      };
+      // const deck = {
+      //   cards: [
+      //     ...cards,
+      //     {
+      //       ...card,
+      //     },
+      //   ],
+      // };
 
-      submitDeck({ key, deck });
+      // submitDeck({ key, deck });
     }
   }
   goBack = () => {
