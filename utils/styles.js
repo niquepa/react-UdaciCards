@@ -1,4 +1,4 @@
-import { purple, white } from "./colors";
+import { purple, white, red, green } from "./colors";
 import { StyleSheet }    from "react-native";
 
 export const styles = StyleSheet.create({
