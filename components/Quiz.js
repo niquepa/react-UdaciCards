@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-// import { NavigationActions } from 'react-navigation';
-import DeckCard from './DeckCard';
-import { NavigationActions } from 'react-navigation';
-import { purple, white } from '../utils/colors';
 import CardDetail from './CardDetail';
+import QuizResult from './QuizResult';
 
 class Quiz extends Component {
   state = {
     cardIndex: 0,
-    percentage: 0,
-    ok: 0,
+    correct: 0,
   }
 
   submitAnswer = (value) => {
-    // if (correct) {
-      this.setState(prevState => ({ ok: prevState.ok + value, cardIndex: prevState.cardIndex + 1 }));
-    // }
+    this.setState(prevState => ({ correct: prevState.correct + value, cardIndex: prevState.cardIndex + 1 }));
   }
 
   render() {
+    const { id, totalCards, deck } = this.props;
+    const { correct, cardIndex } = this.state;
+    
+    if (cardIndex >= totalCards) {
+      const percentage = Math.floor((correct / totalCards) * 100);
+      return (
+        <View>
+          <QuizResult id={id} correct={correct} percentage={percentage} />
+        </View>
+      );
+    }
     return (
       <View>
-        <Text>Quiz view {this.props.id}</Text>
-        <Text>{this.state.cardIndex + 1}/{this.props.totalCards}</Text>
-        <Text>Correct: {this.state.ok}</Text>
-        <CardDetail card={this.props.deck.cards[this.state.cardIndex]} onPress={value => this.submitAnswer(value)} />
+        <Text>Quiz view {id}</Text>
+        <Text>{cardIndex + 1}/{totalCards}</Text>
+        <Text>Correct: {correct}</Text>
+        <CardDetail card={deck.cards[cardIndex]} onPress={value => this.submitAnswer(value)} />
       </View>
     );
   }

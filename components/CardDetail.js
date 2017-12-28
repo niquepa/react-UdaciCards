@@ -12,10 +12,8 @@ class CardDetail extends Component {
     const { navigation, card } = this.props;
     const text = this.state.showAnswer ? card.answer : card.question;
     const link = this.state.showAnswer ? 'View Question' : 'View Answer';
-    console.log(`PROPS EN CARD DETAIL: ${JSON.stringify(card)}`);
     return (
       <View>
-        <Text>PROPS: {JSON.stringify(this.props)}</Text>
         <Text>{text}</Text>
         <Text>{link}</Text>
         <UdacityBtn
