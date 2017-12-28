@@ -23,9 +23,8 @@ class Quiz extends Component {
   render() {
     return (
       <View>
-        <Text>PROPS: {JSON.stringify(this.props.deck.cards)}</Text>
         <Text>Quiz view {this.props.id}</Text>
-        <Text>{this.state.cardIndex + 1}/{this.props.deck.cards.length}</Text>
+        <Text>{this.state.cardIndex + 1}/{this.props.totalCards}</Text>
         <Text>Correct: {this.state.ok}</Text>
         <CardDetail card={this.props.deck.cards[this.state.cardIndex]} onPress={value => this.submitAnswer(value)} />
       </View>
@@ -38,6 +37,7 @@ const mapStateToProps = (decks, { navigation }) => {
   return {
     id,
     deck: decks[id],
+    totalCards: decks[id].cards.length,
   };
 };
 

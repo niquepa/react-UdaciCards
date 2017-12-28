@@ -4,54 +4,21 @@ import { connect } from 'react-redux';
 import { UdacityBtn } from '../utils/helpers';
 
 class DeckDetail extends Component {
-  // static navigationOptions = ( { navigation }) => {
-  //   console.log(`NAV OPTIONS: ${JSON.stringify(navigation)}`);
-  //   // const title = this.props.deck ? this.props.deck.title : 'NO TITULO';
-  //   return {
-  //     title: 'HOLA',
-  //   };
-  // }
-  // constructor(props) {
-  //   super(props);
-  //   if (props.deck) {
-  //     props.navigation.setParams({ deck: props.deck });
-  //   }
-  // }
-
-  // static navigationOptions = ({ navigation }) => {
-  //   // const title = (((((navigation || '').state || '').params || '').deck || '').title || '') !== '' ? navigation.state.params.deck.title : 'NO TITLE';
-  //   const title = navigation.state.params.id;
-  //   return {
-  //     title,
-  //   };
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-  //   console.log('ENTRO A WILL RECEIVE');
-  //   if (nextProps.deck && nextProps.deck !== this.props.deck) {
-  //     console.log('ENTRO A RECEIVE DECK');
-  //     this.props.navigation.setParams({ deck: nextProps.deck });
-  //   }
-  // }
-  // componentDidMount() {
-  //   console.log(`ENTRO A DIDMOUNT ${JSON.stringify(this.navigation)}`);
-  //   if(this.props.deck) {
-  //     this.props.navigation.setParams({ deck: this.props.deck });
-  //   }
-  // }
 
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigation, totalCards, deck } = this.props;
     console.log(`PROPS EN RENDER DETAIL: ${JSON.stringify(this.props)}`);
     // console.log(`STYLES ${styles.iosSubmitBtn}`)
     return (
       <View>
         <Text>PROPS: {JSON.stringify(this.props)}</Text>
-        <Text>{this.props.deck.title}</Text>
-        <Text>{this.props.deck.cards.length} cards</Text>
+        <Text>{deck.title}</Text>
+        <Text>{totalCards} cards</Text>
         <UdacityBtn
           text="Start Quiz"
-          onPress={() => navigate('Quiz', { id: this.props.id })}
+          onPress={() => (navigation.navigate('Quiz', { id: this.props.id }))}
+          disabled={totalCards > 0 ? false : true}
+          color={totalCards > 0 ? '' : 'gray'}
         />
       </View>
     );
@@ -63,6 +30,7 @@ const mapStateToProps = (decks, { navigation }) => {
   return {
     id,
     deck: decks[id],
+    totalCards: decks[id].cards.length,
   };
 };
 

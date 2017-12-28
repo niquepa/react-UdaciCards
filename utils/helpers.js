@@ -9,6 +9,7 @@ export const UdacityBtn = props => (
     // style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
     style={[Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn, props.color ? { backgroundColor: props.color } : '']}
     onPress={props.onPress}
+    disabled={props.disabled}
   >
     <Text style={styles.CardText}> {props.text} </Text>
   </TouchableOpacity>
