@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import FlipCard from 'react-native-flip-card';
 import { UdacityBtn } from '../utils/helpers';
 import { Back, Face } from './CardDetailFace';
+import { styles } from '../utils/styles';
 
 
 class CardDetail extends Component {
@@ -88,17 +89,17 @@ class CardDetail extends Component {
     }
 
     return (
-      <View>
-        <Animated.View
-          style={[
-            {
-              transform,
-              opacity,
-            },
-          ]}
-        >
-          {cardSide}
-        </Animated.View>
+      <View style={styles.container}>
+        <FlipCard>
+          {/* Face Side */}
+          <View style={styles.face}>
+            <Text>{card.question}</Text>
+          </View>
+          {/* Back Side */}
+          <View style={styles.back}>
+            <Text>{card.answer}</Text>
+          </View>
+        </FlipCard>
         <UdacityBtn
           text="Correct"
           onPress={() => this.props.onPress(1)}

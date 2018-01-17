@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import CardDetail from './CardDetail';
 import QuizResult from './QuizResult';
+import { styles } from '../utils/styles';
 
 class Quiz extends Component {
   state = {
@@ -27,7 +28,7 @@ class Quiz extends Component {
       );
     }
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Quiz view {id}</Text>
         <Text>{cardIndex + 1}/{totalCards}</Text>
         <Text>Correct: {correct}</Text>

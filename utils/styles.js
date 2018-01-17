@@ -1,10 +1,12 @@
-import { purple, white, red, green } from "./colors";
-import { StyleSheet }    from "react-native";
+import { purple, white, red, green } from './colors';
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    justifyContent: 'center',
+    flex: 1,
+    // justifyContent: 'center',
+    // justifyContent: 'space-between',
+    justifyContent: 'space-around',
     // paddingHorizontal: 10,
     marginTop: 10,
   },
@@ -32,4 +34,12 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
   },
+  face: {
+    height: 100,
+    // padding: 100,
+  },
+  back: {
+    height: 100,
+    // padding: 100,
+  }
 });
