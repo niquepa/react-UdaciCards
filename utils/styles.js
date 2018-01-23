@@ -11,6 +11,13 @@ export const styles = StyleSheet.create({
     // paddingHorizontal: 10,
     marginTop: 10,
   },
+  containerCenter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 30,
+    marginRight: 30,
+  },
   iosDeckCard: {
     backgroundColor: purple,
     borderRadius: 10,
@@ -20,7 +27,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: 'center',
   },
-  AndroidDeckCard: {
+  androidDeckCard: {
     backgroundColor: purple,
     borderRadius: 10,
     height: 90,
@@ -30,15 +37,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   iosSubmitBtn: {
-    backgroundColor: purple,
+    backgroundColor: green,
     padding: 10,
     borderRadius: 7,
     height: 45,
     marginLeft: 40,
     marginRight: 40,
   },
-  AndroidSubmitBtn: {
-    backgroundColor: purple,
+  androidSubmitBtn: {
+    backgroundColor: green,
     padding: 10,
     paddingLeft: 30,
     paddingRight: 30,
@@ -48,15 +55,27 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  CardTitle: {
+  cardTitle: {
     color: white,
     fontSize: 22,
     textAlign: 'center',
   },
-  CardSubTitle: {
+  cardSubTitle: {
     color: white,
     fontSize: 14,
     textAlign: 'center',
+  },
+  h1: {
+    fontSize: 50,
+  },
+  inputText: {
+    width: 200,
+    height: 44,
+    padding: 8,
+    borderWidth: 1,
+    borderColor: purple,
+    fontSize: 22,
+    margin: 20,
   },
   face: {
     height: 100,

@@ -11,11 +11,11 @@ class DeckCard extends Component {
     return (
       <View >
         <TouchableOpacity
-          style={[Platform.OS === 'ios' ? styles.iosDeckCard : styles.AndroidDeckCard]}
+          style={[Platform.OS === 'ios' ? styles.iosDeckCard : styles.androidDeckCard]}
           onPress={onPress}
         >
-          <Text style={styles.CardTitle}>{title}</Text>
-          <Text style={styles.CardSubTitle}>{cards} Cards</Text>
+          <Text style={styles.cardTitle}>{title}</Text>
+          <Text style={styles.cardSubTitle}>{cards} Cards</Text>
         </TouchableOpacity>
       </View>
     );
