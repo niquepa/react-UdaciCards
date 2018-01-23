@@ -4,11 +4,30 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'flex-start',
     // justifyContent: 'center',
     // justifyContent: 'space-between',
-    justifyContent: 'space-around',
+    // justifyContent: 'space-around',
     // paddingHorizontal: 10,
     marginTop: 10,
+  },
+  iosDeckCard: {
+    backgroundColor: purple,
+    borderRadius: 10,
+    height: 90,
+    marginLeft: 40,
+    marginRight: 40,
+    marginTop: 20,
+    justifyContent: 'center',
+  },
+  AndroidDeckCard: {
+    backgroundColor: purple,
+    borderRadius: 10,
+    height: 90,
+    marginLeft: 40,
+    marginRight: 40,
+    marginTop: 20,
+    justifyContent: 'center',
   },
   iosSubmitBtn: {
     backgroundColor: purple,
@@ -29,9 +48,14 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  CardText: {
+  CardTitle: {
     color: white,
     fontSize: 22,
+    textAlign: 'center',
+  },
+  CardSubTitle: {
+    color: white,
+    fontSize: 14,
     textAlign: 'center',
   },
   face: {
@@ -41,5 +65,5 @@ export const styles = StyleSheet.create({
   back: {
     height: 100,
     // padding: 100,
-  }
+  },
 });

@@ -12,7 +12,7 @@ class CardDetail extends Component {
     const { card } = this.props;
 
     return (
-      <View style={styles.container}>
+      <View>
         <FlipCard>
           <View style={styles.face}>
             <Text>{card.question}</Text>
