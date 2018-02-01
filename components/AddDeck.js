@@ -15,6 +15,11 @@ class AddDeck extends Component {
   handleTextChange = (title) => {
     this.setState({ title });
   }
+  handleOnFocus = () => {
+    if (this.state.title === 'My Deck') {
+      this.setState({ title: '' });
+    }
+  }
   submit = () => {
     if (this.state.title === '' || this.state.title === 'undefined') {
       alert('Error creating new deck', 'You have to specify a title');
@@ -46,6 +51,7 @@ class AddDeck extends Component {
         <TextInput
           value={this.state.title}
           onChangeText={this.handleTextChange}
+          onFocus={this.handleOnFocus}
           style={styles.inputText}
         />
         <UdacityBtn text="Create Deck" onPress={this.submit} />

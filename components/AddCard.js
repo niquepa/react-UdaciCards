@@ -10,7 +10,17 @@ class AddCard extends Component {
     question: 'The Question?',
     answer: 'The Answer',
   }
-
+  
+  handleOnFocusQuestion = () => {
+    if (this.state.question === 'The Question?') {
+      this.setState({ question: '' });
+    }
+  }
+  handleOnFocusAnswer = () => {
+    if (this.state.answer === 'The Answer') {
+      this.setState({ answer: '' });
+    }
+  }
   submit = () => {
     if (this.state.question === '' || this.state.question === 'undefined' || this.state.answer === '' || this.state.answer === 'undefined') {
       alert('Error creating new card', 'You have to specify a Question and an Answer');
@@ -48,11 +58,13 @@ class AddCard extends Component {
         <TextInput
           value={this.state.question}
           onChangeText={text => this.setState({ question: text })}
+          onFocus={this.handleOnFocusQuestion}
           style={styles.inputText}
         />
         <TextInput
           value={this.state.answer}
           onChangeText={text => this.setState({ answer: text })}
+          onFocus={this.handleOnFocusAnswer}
           style={styles.inputText}
         />
         <UdacityBtn text="Add Card" onPress={this.submit} />
