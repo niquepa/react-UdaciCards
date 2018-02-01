@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import DeckCard from './DeckCard';
 import { fetchDecks } from '../actions/index';
@@ -14,8 +14,9 @@ class DecksList extends Component {
     const { decks } = this.props;
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        {
+      <ScrollView>
+        <View style={styles.container}>
+          {
           Object.keys(decks).map(key => (
             <DeckCard
               key={key}
@@ -25,7 +26,8 @@ class DecksList extends Component {
             />
           ))
         }
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
