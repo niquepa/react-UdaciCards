@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import CardDetail from './CardDetail';
 import QuizResult from './QuizResult';
 import { styles } from '../utils/styles';
+import FlipCard from 'react-native-flip-card';
+import { UdacityBtn } from '../utils/helpers';
 
 class Quiz extends Component {
   state = {
@@ -18,7 +20,7 @@ class Quiz extends Component {
   render() {
     const { id, totalCards, deck } = this.props;
     const { correct, cardIndex } = this.state;
-    
+
     if (cardIndex >= totalCards) {
       const percentage = Math.floor((correct / totalCards) * 100);
       return (
@@ -28,11 +30,33 @@ class Quiz extends Component {
       );
     }
     return (
-      <View style={styles.container}>
-        <Text>Quiz view {id}</Text>
-        <Text>{cardIndex + 1}/{totalCards}</Text>
-        <Text>Correct: {correct}</Text>
-        <CardDetail card={deck.cards[cardIndex]} onPress={value => this.submitAnswer(value)} />
+      <View style={styles.containerQuiz}>
+        <ScrollView>
+          <Text style={[styles.h3, styles.left]}>{cardIndex + 1}/{totalCards}</Text>
+          {/* <CardDetail card={deck.cards[cardIndex]} onPress={value => this.submitAnswer(value)} /> */}
+          <View>
+            <FlipCard style={styles.card}>
+              <View style={styles.face}>
+                <Text style={styles.h1}>{deck.cards[cardIndex].question}</Text>
+              </View>
+              <View style={styles.back}>
+                <Text style={styles.h1}>{deck.cards[cardIndex].answer}</Text>
+              </View>
+            </FlipCard>
+          </View>
+          <View style={styles.buttons}>
+            <UdacityBtn
+              text="Correct"
+              onPress={() => this.props.onPress(1)}
+              color="green"
+            />
+            <UdacityBtn
+              text="Incorrect"
+              onPress={() => this.props.onPress(0)}
+              color="red"
+            />
+          </View>
+        </ScrollView>
       </View>
     );
   }

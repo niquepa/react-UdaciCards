@@ -5,11 +5,13 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    // justifyContent: 'center',
-    // justifyContent: 'space-between',
-    // justifyContent: 'space-around',
-    // paddingHorizontal: 10,
     marginTop: 10,
+  },
+  containerQuiz: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   containerCenter: {
     flex: 1,
@@ -57,6 +59,7 @@ export const styles = StyleSheet.create({
     height: 45,
     marginLeft: 40,
     marginRight: 40,
+    marginTop: 20,
   },
   androidSubmitBtn: {
     backgroundColor: green,
@@ -110,12 +113,28 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     margin: 20,
   },
+  card: {
+    width: 350,
+    height: 200,
+  },
   face: {
-    height: 100,
-    // padding: 100,
+    flex: 1,
+    backgroundColor: '#2ecc71',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   back: {
-    height: 100,
-    // padding: 100,
+    flex: 1,
+    backgroundColor: '#f1c40f',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+  left: {
+    alignContent: 'flex-start',
+  },
+  buttons:  {
+    marginTop: 50,
+    flex: 1,
+    justifyContent: 'flex-end',
+  }
 });
