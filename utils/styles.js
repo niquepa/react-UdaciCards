@@ -136,5 +136,8 @@ export const styles = StyleSheet.create({
     marginTop: 50,
     flex: 1,
     justifyContent: 'flex-end',
-  }
+  },
+  result: {
+    color: red,
+  },
 });

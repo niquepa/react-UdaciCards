@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 import CardDetail from './CardDetail';
 import QuizResult from './QuizResult';
 import { styles } from '../utils/styles';
-import FlipCard from 'react-native-flip-card';
-import { UdacityBtn } from '../utils/helpers';
 
 class Quiz extends Component {
   state = {
@@ -14,7 +13,15 @@ class Quiz extends Component {
   }
 
   submitAnswer = (value) => {
-    this.setState(prevState => ({ correct: prevState.correct + value, cardIndex: prevState.cardIndex + 1 }));
+    this.setState(prevState => ({
+      correct: prevState.correct + value,
+      cardIndex: prevState.cardIndex + 1,
+    }));
+  }
+
+  toDeck = () => {
+    const navigateAction = NavigationActions.navigate({ routeName: 'DeckDetail', params: { id: this.props.id } });
+    this.props.navigation.dispatch(navigateAction);
   }
 
   render() {
@@ -24,8 +31,8 @@ class Quiz extends Component {
     if (cardIndex >= totalCards) {
       const percentage = Math.floor((correct / totalCards) * 100);
       return (
-        <View>
-          <QuizResult id={id} correct={correct} percentage={percentage} />
+        <View style={styles.containerCenter}>
+          <QuizResult id={id} correct={correct} percentage={percentage} totalCards={totalCards} toDeck={this.toDeck} />
         </View>
       );
     }
