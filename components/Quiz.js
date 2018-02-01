@@ -33,29 +33,7 @@ class Quiz extends Component {
       <View style={styles.containerQuiz}>
         <ScrollView>
           <Text style={[styles.h3, styles.left]}>{cardIndex + 1}/{totalCards}</Text>
-          {/* <CardDetail card={deck.cards[cardIndex]} onPress={value => this.submitAnswer(value)} /> */}
-          <View>
-            <FlipCard style={styles.card}>
-              <View style={styles.face}>
-                <Text style={styles.h1}>{deck.cards[cardIndex].question}</Text>
-              </View>
-              <View style={styles.back}>
-                <Text style={styles.h1}>{deck.cards[cardIndex].answer}</Text>
-              </View>
-            </FlipCard>
-          </View>
-          <View style={styles.buttons}>
-            <UdacityBtn
-              text="Correct"
-              onPress={() => this.props.onPress(1)}
-              color="green"
-            />
-            <UdacityBtn
-              text="Incorrect"
-              onPress={() => this.props.onPress(0)}
-              color="red"
-            />
-          </View>
+          <CardDetail card={deck.cards[cardIndex]} onPress={value => this.submitAnswer(value)} />
         </ScrollView>
       </View>
     );

@@ -12,24 +12,28 @@ class CardDetail extends Component {
 
     return (
       <View>
-        <FlipCard>
-          <View style={styles.face}>
-            <Text style={styles.h1}>{card.question}</Text>
-          </View>
-          <View style={styles.back}>
-            <Text style={styles.h1}>{card.answer}</Text>
-          </View>
-        </FlipCard>
-        <UdacityBtn
-          text="Correct"
-          onPress={() => this.props.onPress(1)}
-          color="green"
-        />
-        <UdacityBtn
-          text="Incorrect"
-          onPress={() => this.props.onPress(0)}
-          color="red"
-        />
+        <View>
+          <FlipCard style={styles.card}>
+            <View style={styles.face}>
+              <Text style={styles.h1}>{card.question}</Text>
+            </View>
+            <View style={styles.back}>
+              <Text style={styles.h1}>{card.answer}</Text>
+            </View>
+          </FlipCard>
+        </View>
+        <View style={styles.buttons}>
+          <UdacityBtn
+            text="Correct"
+            onPress={() => this.props.onPress(1)}
+            color="green"
+          />
+          <UdacityBtn
+            text="Incorrect"
+            onPress={() => this.props.onPress(0)}
+            color="red"
+          />
+        </View>
       </View>
     );
   }
