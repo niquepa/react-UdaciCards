@@ -20,8 +20,7 @@ class Quiz extends Component {
   }
 
   toDeck = () => {
-    const navigateAction = NavigationActions.navigate({ routeName: 'DeckDetail', params: { id: this.props.id } });
-    this.props.navigation.dispatch(navigateAction);
+    this.props.navigation.goBack(null);
   }
 
   render() {
