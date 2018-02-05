@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, Platform, TextInput } from 'react-native';
+import { View, Text, TextInput, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { addDeck } from '../actions';
@@ -46,7 +46,7 @@ class AddDeck extends Component {
 
   render() {
     return (
-      <View style={styles.containerCenter}>
+      <KeyboardAvoidingView style={styles.containerCenter} behavior="padding">
         <Text style={styles.h1}>What is the title of your new deck?</Text>
         <TextInput
           value={this.state.title}
@@ -55,7 +55,8 @@ class AddDeck extends Component {
           style={styles.inputText}
         />
         <UdacityBtn text="Create Deck" onPress={this.submit} />
-      </View>
+        <View style={{ height: 60 }} />
+      </KeyboardAvoidingView>
     );
   }
 }

@@ -13,7 +13,7 @@ class CardDetail extends Component {
     return (
       <View>
         <View>
-          <FlipCard style={styles.card}>
+          <FlipCard style={styles.card} perspective={1000}>
             <View style={styles.face}>
               <Text style={styles.h1}>{card.question}</Text>
             </View>

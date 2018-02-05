@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { newCard } from '../actions';
 import { alert, UdacityBtn } from '../utils/helpers';
@@ -10,7 +10,7 @@ class AddCard extends Component {
     question: 'The Question?',
     answer: 'The Answer',
   }
-  
+
   handleOnFocusQuestion = () => {
     if (this.state.question === 'The Question?') {
       this.setState({ question: '' });
@@ -25,7 +25,6 @@ class AddCard extends Component {
     if (this.state.question === '' || this.state.question === 'undefined' || this.state.answer === '' || this.state.answer === 'undefined') {
       alert('Error creating new card', 'You have to specify a Question and an Answer');
     } else {
-
       const key = this.props.id;
       const cards = this.props.deck.cards;
 
@@ -54,7 +53,7 @@ class AddCard extends Component {
 
   render() {
     return (
-      <View style={styles.containerCenter}>
+      <KeyboardAvoidingView style={styles.containerCenter} behavior="padding">
         <TextInput
           value={this.state.question}
           onChangeText={text => this.setState({ question: text })}
@@ -68,7 +67,8 @@ class AddCard extends Component {
           style={styles.inputText}
         />
         <UdacityBtn text="Add Card" onPress={this.submit} />
-      </View>
+        <View style={{ height: 60 }} />
+      </KeyboardAvoidingView>
     );
   }
 }
