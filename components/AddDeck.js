@@ -35,14 +35,18 @@ class AddDeck extends Component {
 
       this.setState({ title: 'My Deck' });
 
-      this.toHome();
-
       submitDeck({ key, deck });
+
+      this.toNewDeck(key);
     }
   }
 
   toHome = () => {
     this.props.navigation.dispatch(NavigationActions.back({ key: 'AddDeck' }));
+  }
+
+  toNewDeck = (id) => {
+    this.props.navigation.navigate('DeckDetail', { id });
   }
 
   render() {
