@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
+import PropTypes from 'prop-types';
 import { addDeck } from '../actions';
 import { submitDeck } from '../utils/api';
 import { alert, UdacityBtn } from '../utils/helpers';
@@ -64,5 +65,10 @@ class AddDeck extends Component {
 const mapStateToProps = state => ({
 
 });
+
+AddDeck.propTypes = {
+  dispatch: PropTypes.func,
+  navigation: PropTypes.object,
+};
 
 export default connect(mapStateToProps)(AddDeck);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import FlipCard from 'react-native-flip-card';
+import PropTypes from 'prop-types';
 import { UdacityBtn } from '../utils/helpers';
 import { styles } from '../utils/styles';
 
@@ -44,5 +45,10 @@ class CardDetail extends Component {
 
 const mapStateToProps = (decks, { navigation }) => ({
 });
+
+CardDetail.propTypes = {
+  onPress: PropTypes.func,
+  card: PropTypes.object,
+};
 
 export default connect(mapStateToProps)(CardDetail);

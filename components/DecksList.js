@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import DeckCard from './DeckCard';
 import { fetchDecks } from '../actions/index';
 import { styles } from '../utils/styles';
@@ -39,5 +40,11 @@ const mapStateToProps = decks => ({
 const mapDispatchToProps = dispatch => ({
   getDecks: () => dispatch(fetchDecks()),
 });
+
+DecksList.propTypes = {
+  getDecks: PropTypes.func,
+  decks: PropTypes.object,
+  navigation: PropTypes.object,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DecksList);

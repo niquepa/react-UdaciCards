@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
+import PropTypes from 'prop-types';
 import CardDetail from './CardDetail';
 import QuizResult from './QuizResult';
 import { styles } from '../utils/styles';
@@ -58,6 +58,13 @@ const mapStateToProps = (decks, { navigation }) => {
     deck: decks[id],
     totalCards: decks[id].cards.length,
   };
+};
+
+Quiz.propTypes = {
+  id: PropTypes.string,
+  deck: PropTypes.object,
+  totalCards: PropTypes.number,
+  navigation: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(Quiz);

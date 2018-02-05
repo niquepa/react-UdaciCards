@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, Platform } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { styles } from '../utils/styles';
 
 class DeckCard extends Component {
@@ -24,5 +25,11 @@ class DeckCard extends Component {
 const mapStateToProps = decks => ({
   // decks,
 });
+
+DeckCard.propTypes = {
+  onPress: PropTypes.func,
+  cards: PropTypes.number,
+  title: PropTypes.string,
+};
 
 export default connect(mapStateToProps)(DeckCard);

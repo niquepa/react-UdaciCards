@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "expo": "^23.0.4",
+    "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "0.50.3",
     "react-native-flip-card": "^3.5.2",

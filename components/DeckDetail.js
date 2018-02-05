@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { UdacityBtn } from '../utils/helpers';
 import { styles } from '../utils/styles';
 
@@ -31,6 +32,13 @@ const mapStateToProps = (decks, { navigation }) => {
     deck: decks[id],
     totalCards: decks[id].cards.length,
   };
+};
+
+DeckDetail.propTypes = {
+  id: PropTypes.string,
+  deck: PropTypes.object,
+  totalCards: PropTypes.number,
+  navigation: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(DeckDetail);

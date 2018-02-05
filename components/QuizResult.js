@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { styles } from '../utils/styles';
 import { UdacityBtn, clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
@@ -28,5 +29,13 @@ class QuizResult extends Component {
 
 const mapStateToProps = (decks, { navigation }) => ({
 });
+
+QuizResult.propTypes = {
+  percentage: PropTypes.number,
+  totalCards: PropTypes.number,
+  correct: PropTypes.number,
+  toQuiz: PropTypes.func,
+  toDeck: PropTypes.func,
+};
 
 export default connect(mapStateToProps)(QuizResult);

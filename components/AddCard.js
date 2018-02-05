@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { newCard } from '../actions';
 import { alert, UdacityBtn } from '../utils/helpers';
 import { styles } from '../utils/styles';
@@ -84,5 +85,12 @@ const mapStateToProps = (decks, { navigation }) => {
 const mapDispatchToProps = dispatch => ({
   addCard: (deck, card) => dispatch(newCard(deck, card)),
 });
+
+AddCard.propTypes = {
+  id: PropTypes.string,
+  deck: PropTypes.object,
+  navigation: PropTypes.object,
+  addCard: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCard);
