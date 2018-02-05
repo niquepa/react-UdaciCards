@@ -22,6 +22,9 @@ class CardDetail extends Component {
             </View>
           </FlipCard>
         </View>
+        <View>
+          <Text style={styles.secondaryText}>* Click the question to see the answer</Text>
+        </View>
         <View style={styles.buttons}>
           <UdacityBtn
             text="Correct"
