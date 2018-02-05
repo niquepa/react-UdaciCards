@@ -20,7 +20,12 @@ class Quiz extends Component {
   }
 
   toDeck = () => {
-    this.props.navigation.goBack(null);
+    // this.props.navigation.goBack(null);
+    this.props.navigation.navigate('DeckDetail', { id: this.props.id });
+  }
+
+  toQuiz = () => {
+    this.props.navigation.navigate('Quiz', { id: this.props.id });
   }
 
   render() {
@@ -31,7 +36,7 @@ class Quiz extends Component {
       const percentage = Math.floor((correct / totalCards) * 100);
       return (
         <View style={styles.containerCenter}>
-          <QuizResult id={id} correct={correct} percentage={percentage} totalCards={totalCards} toDeck={this.toDeck} />
+          <QuizResult id={id} correct={correct} percentage={percentage} totalCards={totalCards} toDeck={this.toDeck} toQuiz={this.toQuiz} />
         </View>
       );
     }

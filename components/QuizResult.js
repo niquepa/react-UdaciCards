@@ -18,6 +18,7 @@ class QuizResult extends Component {
           <Text style={[styles.h1, styles.result]}>{this.props.percentage} %</Text>
         </View>
         <View style={styles.container}>
+          <UdacityBtn text="Start over!" onPress={this.props.toQuiz} />
           <UdacityBtn text="Return to deck" onPress={this.props.toDeck} />
         </View>
       </View>
