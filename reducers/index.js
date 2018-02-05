@@ -13,7 +13,6 @@ function decks(state = {}, action) {
         ...action.deck,
       };
     case ADD_CARD:
-      console.log(`ADD CARD ${action.deck} - ${JSON.stringify(action.card)}`);
       return {
         ...state,
         [action.deck]: {

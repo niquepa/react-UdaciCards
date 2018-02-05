@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { styles } from '../utils/styles';
-import { UdacityBtn } from '../utils/helpers';
+import { UdacityBtn, clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class QuizResult extends Component {
+  componentDidMount() {
+    clearLocalNotification()
+      .then(setLocalNotification);
+  }
+
   render() {
     return (
       <View>

@@ -7,7 +7,8 @@ import { Constants } from 'expo';
 import thunk from 'redux-thunk';
 import MainNav from './components/Navigators/MainNav';
 import reducer from './reducers';
-import { red, purple, white } from './utils/colors';
+import { purple } from './utils/colors';
+import { setLocalNotification } from './utils/helpers';
 
 const store = createStore(
   reducer,
@@ -23,6 +24,9 @@ function UdaciStatusBar({ backgroundColor, ...props }) {
 }
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
   render() {
     return (
       <Provider store={store}>

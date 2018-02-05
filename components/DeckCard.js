@@ -6,7 +6,6 @@ import { styles } from '../utils/styles';
 class DeckCard extends Component {
   render() {
     const { title, cards, onPress } = this.props;
-    console.log(`PROPS: ${JSON.stringify(this.props.navigation)}`);
 
     return (
       <View >

@@ -7,7 +7,6 @@ import { styles } from '../utils/styles';
 class DeckDetail extends Component {
   render() {
     const { navigation, totalCards, deck } = this.props;
-    console.log(`PROPS EN RENDER DETAIL: ${JSON.stringify(this.props)}`);
     return (
       <View style={styles.containerCenter}>
         <Text style={styles.h1}>{deck.title}</Text>

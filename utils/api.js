@@ -13,7 +13,6 @@ export function getDecks() {
 
 export function submitDeck({ key, deck }) {
   try {
-    console.log(`SAVING IN LOCAL ${key}:${JSON.stringify(deck)}`);
     return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
       [key]: deck,
     }));
